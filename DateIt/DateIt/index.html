@@ -1,15 +1,132 @@
-﻿<!DOCTYPE html>
-
-<html lang="en">
+﻿<!doctype html>
+<html ng-app="myApp">
 <head>
-    <meta charset="utf-8" />
-    <title>TypeScript HTML App</title>
-    <link rel="stylesheet" href="app.css" type="text/css" />
-    <script src="app.js"></script>
+    <meta charset="utf-8">
+    <title>My AngularJS App</title>
+    <link rel="stylesheet" href="/css/app.css" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="Content/custom.css" rel="stylesheet" />
+    <link href="Content/fonts.css" rel="stylesheet" />
+    <link href="Content/global.css" rel="stylesheet" />
+    <link href="Content/jqm.structure.css" rel="stylesheet" />
+    <link href="Content/swatches.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>TypeScript HTML App</h1>
+    <ng-view></ng-view>
+    <div data-init-selector=":jqmData(role='controlgroup')" data-mini="false" data-exclude-invisible="true"
+        data-corners="true" data-shadow="false" data-disabled="false" aria-disabled="false"
+        class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal" data-role="controlgroup"
+        data-type="horizontal">
+        <div class="ui-controlgroup-controls">
+            <a class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext ui-first-child ui-btn-up-a"
+                title="Yes" data-wrapperels="span" data-iconshadow="true" data-shadow="true"
+                data-corners="true" href="#/text" data-icon="flat-plus" data-theme="a" data-iconpos="notext"
+                data-role="button"><span class="ui-btn-inner"><span class="ui-btn-text">Yes</span><span
+                    class="ui-icon ui-icon-flat-plus ui-icon-shadow">&nbsp;</span></span></a>
+            <a class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext ui-btn-up-a" title="Yes"
+                data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true"
+                href="#" data-icon="flat-camera" data-theme="a" data-iconpos="notext" data-role="button">
+                <span class="ui-btn-inner"><span class="ui-btn-text">Yes</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow">&nbsp;</span></span></a>
+            <a class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext ui-btn-up-a" title="Yes"
+                data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true"
+                href="#" data-icon="flat-heart" data-theme="a" data-iconpos="notext" data-role="button">
+                <span class="ui-btn-inner"><span class="ui-btn-text">Yes</span><span class="ui-icon ui-icon-flat-heart ui-icon-shadow">&nbsp;</span></span></a>
+            <a class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext ui-last-child ui-btn-up-a"
+                title="Yes" data-wrapperels="span" data-iconshadow="true" data-shadow="true"
+                data-corners="true" href="#" data-icon="flat-eye" data-theme="a" data-iconpos="notext"
+                data-role="button"><span class="ui-btn-inner"><span class="ui-btn-text">Yes</span><span
+                    class="ui-icon ui-icon-flat-eye ui-icon-shadow">&nbsp;</span></span></a>
+        </div>
+    </div>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="Scripts/ui-bootstrap-0.4.0.js"></script>
+    <script src="Scripts/ui-bootstrap-tpls-0.4.0.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/services.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/filters.js"></script>
+    <script src="/js/directives.js"></script>
+    <script src="Scripts/cordova.js"></script>
+    <script type="text/javascript">
+        var c = document.createElement("canvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("Image");
+        c.height = 480;
+        c.width = 640;
+        var workerCount = 0;
+        var ResultOfDecoding = document.getElementById("Result");
 
-    <div id="content"></div>
+        function receiveMessage(e) {
+            if (e.data.success === "log") {
+                console.log(e.data.result);
+                return;
+            }
+            workerCount--;
+            if (e.data.success) {
+                var tempArray = e.data.result;
+                for (var i = 0; i < tempArray.length; i++) {
+                    if (resultArray.indexOf(tempArray[i]) == -1) {
+                        resultArray.push(tempArray[i]);
+                    }
+                }
+                ResultOfDecoding.innerHTML = resultArray.join("<br />");
+                workerCount = 0;
+            } else {
+                if (workerCount == 1) {
+                    FlipWorker.postMessage({ pixels: ctx.getImageData(0, 0, c.width, c.height).data, cmd: "flip" });
+                }
+            }
+            if (workerCount == 0) {
+                if (resultArray.length === 0) {
+                    ResultOfDecoding.innerHTML = "Decoding failed.";
+                } else {
+                    ResultOfDecoding.innerHTML = resultArray.join("<br />");
+                }
+            }
+        }
+        var DecodeWorker = new Worker("DecoderWorker.js");
+        var FlipWorker = new Worker("DecoderWorker.js");
+        DecodeWorker.onmessage = receiveMessage;
+        FlipWorker.onmessage = receiveMessage;
+        var resultArray = [];
+        var prev = document.getElementById("PreviousImage");
+        var next = document.getElementById("NextImage");
+        var decode = document.getElementById("Decode");
+        decode.addEventListener("click", Decode, false);
+        next.addEventListener("click", NextImage, false);
+        prev.addEventListener("click", PrevImage, false);
+        ImageCounter = 0;
+        ImageList = ["Sample-images/03.jpg", "Sample-images/04.jpg", "Sample-images/06 (2).jpg", "Sample-images/06.jpg", "Sample-images/07 (2).jpg", "Sample-images/07.jpg", "Sample-images/08 (2).jpg", "Sample-images/code93.jpg", "Sample-images/08.jpg", "Sample-images/1 (2).JPG", "Sample-images/1.gif", "Sample-images/1.jpg", "Sample-images/10 (2).JPG", "Sample-images/10.jpg", "Sample-images/11.jpg", "Sample-images/12 (2).jpg", "Sample-images/13 (2).jpg", "Sample-images/13 (3).jpg", "Sample-images/13 (4).jpg", "Sample-images/136253222790411.gif", "Sample-images/14 (2).jpg", "Sample-images/15 (2).JPG", "Sample-images/15 (3).jpg", "Sample-images/15.jpg", "Sample-images/16.jpg", "Sample-images/17.jpg", "Sample-images/1D2D.jpg", "Sample-images/2.jpg", "Sample-images/20 (2).JPG", "Sample-images/20.jpg", "Sample-images/20.png", "Sample-images/21 (2).jpg", "Sample-images/21.jpg", "Sample-images/23.JPG", "Sample-images/24.JPG", "Sample-images/24.png", "Sample-images/25.jpg", "Sample-images/3037044282_c6396bc09a.jpg", "Sample-images/31 (2).jpg", "Sample-images/31.jpg", "Sample-images/32.jpg", "Sample-images/33.jpg", "Sample-images/33.png", "Sample-images/34.jpg", "Sample-images/39.jpg", "Sample-images/4.png", "Sample-images/40.jpg", "Sample-images/7 (2).JPG", "Sample-images/7.jpg", "Sample-images/7355ae1b-12eb-4e70-a650-f659.JPG", "Sample-images/7784075_orig.gif", "Sample-images/8.jpg", "Sample-images/barcod.jpg", "Sample-images/barcode-fax.gif", "Sample-images/barcode-oldpaper.gif", "Sample-images/barcode.jpg", "Sample-images/barcode3.gif", "Sample-images/barcodechart.gif", "Sample-images/barcodeexample.gif", "Sample-images/barcodes (3).jpg", "Sample-images/barcodes2.jpg", "Sample-images/barcode_code128.jpg", "Sample-images/barcode_sc.png", "Sample-images/Code128-C.bmp", "Sample-images/Code128-warped.bmp", "Sample-images/code128_barcode_label.jpg", "Sample-images/code39.jpg", "Sample-images/FrmI.jpg", "Sample-images/getac_barcode_sw.jpg", "Sample-images/image.jpg", "Sample-images/bild.PNG", "Sample-images/image002.jpg", "Sample-images/Kris-Aura-SP8bc.jpg", "Sample-images/ku-xlarge.jpg", "Sample-images/mesk.jpg", "Sample-images/Picture1.png", "Sample-images/sample_bar_code_label.jpg", "Sample-images/shipping_label_2d_barcode.jpg", "Sample-images/Code93-C.bmp", "Sample-images/mzl.isxtfluk.320x480-75.jpg", "Sample-images/mzl.lfdqlrsn.320x480-75.jpg", "Sample-images/mzl.uswzqyex.jpg", "Sample-images/Product-Label.jpg", "Sample-images/zebra-scan.jpg", "Sample-images/standard_barcodes.jpg", "Sample-images/WpHole.jpg", "Sample-images/WP_000075.jpg"];
+        ImageList.reverse();
+        ImageList.slice().forEach(function (path) { new Image().src = path; });
+        function NextImage() {
+            if (workerCount > 0) return;
+            ResultOfDecoding.innerHTML = '';
+            resultArray = [];
+            ImageList.push(img.src);
+            img.src = ImageList.shift();
+            ImageCounter++;
+            ImageCounter = ImageCounter > ImageList.length ? 0 : ImageCounter;
+        }
+
+        function PrevImage() {
+            if (workerCount > 0) return;
+            ResultOfDecoding.innerHTML = '';
+            resultArray = [];
+            ImageList.unshift(img.src);
+            img.src = ImageList.pop();
+            ImageCounter--;
+            ImageCounter = ImageCounter < 0 ? ImageList.length : ImageCounter;
+        }
+        function Decode() {
+            if (workerCount > 0) return;
+            workerCount = 2;
+            ResultOfDecoding.innerHTML = '';
+            resultArray = [];
+            ctx.drawImage(img, 0, 0, c.width, c.height);
+            DecodeWorker.postMessage({ pixels: ctx.getImageData(0, 0, c.width, c.height).data, cmd: "normal" });
+        }
+    </script>
 </body>
 </html>
