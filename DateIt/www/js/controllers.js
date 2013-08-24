@@ -4,9 +4,17 @@
 
 function InFridgeController($scope) {
     var client = new WindowsAzure.MobileServiceClient("https://dateit.azure-mobile.net/", "epvrqDRqGFqTPTjzhGajZJXlOyNvky95");
-    $scope.inFridgeItems = client.getTable('DateItItem');
+    var dateItTable = client.getTable('DateItItem');
+    var query = dateItTable.read().done(function (results) {
+        //console.log(JSON.stringify(results));
+        $scope.inFridgeItems = results;
+        $scope.$apply();
+    }, function (err) {
+        alert("Error: " + err);
+    });
+    
 }
-InFridgeController.$inject = [$scope];
+InFridgeController.$inject = ["$scope"];
 
 
 function AddItemController($scope, $location) {
@@ -19,4 +27,4 @@ function AddItemController($scope, $location) {
         });
     };
 }
-AddItemController.$inject = [$scope, $location];
+AddItemController.$inject = ["$scope", "$location"];
