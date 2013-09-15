@@ -1,12 +1,12 @@
-﻿<form data-ng-submit="addDateItItem()">
+﻿<form data-ng-submit="addDateItItem(dateItItem)">
     <div class="row">
         <div class="span12">
-            <input type="text" value="" placeholder="name" class="topcoat-text-input" data-ng-model="name" />
+                <mac-autocomplete mac-autocomplete-source="{{uniqueItems}}" mac-autocomplete-label="name" mac-autocomplete-placeholder="name" data-ng-model="dateItItem.name" class="topcoat-text-input"></mac-autocomplete>
         </div>
     </div>
     <div class="row">
         <div class="span12">
-            <input type="text" value="" placeholder="shelf life" class="topcoat-text-input" data-ng-model="shelflifeInDays" />
+            <input type="text" value="" placeholder="shelf life" class="topcoat-text-input" data-ng-model="dateItItem.shelflifeInDays" />
         </div>
     </div>
     <div class="row">
