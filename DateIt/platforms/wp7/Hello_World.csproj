@@ -1,0 +1,1374 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProductVersion>10.0.20506</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{3677C1B7-D68B-4CF9-BF8A-E869D437A6DF}</ProjectGuid>
+        <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>com.example.hello</RootNamespace>
+        <AssemblyName>com.example.hello</AssemblyName>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+        <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+        <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+        <SilverlightApplication>true</SilverlightApplication>
+        <SupportedCultures>
+        </SupportedCultures>
+        <XapOutputs>true</XapOutputs>
+        <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+        <XapFilename>com.example.hello.xap</XapFilename>
+        <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+        <SilverlightAppEntry>com.example.hello.App</SilverlightAppEntry>
+        <ValidateXaml>true</ValidateXaml>
+        <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>Bin\Debug</OutputPath>
+        <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP7</DefineConstants>
+        <NoStdLib>true</NoStdLib>
+        <NoConfig>true</NoConfig>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>Bin\Release</OutputPath>
+        <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+        <NoStdLib>true</NoStdLib>
+        <NoConfig>true</NoConfig>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Microsoft.Devices.Sensors" />
+        <Reference Include="Microsoft.Phone" />
+        <Reference Include="Microsoft.Phone.Interop" />
+        <Reference Include="Microsoft.Xna.Framework" />
+        <Reference Include="System.Device" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.Servicemodel.Web" />
+        <Reference Include="System.Windows" />
+        <Reference Include="system" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Net" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Xml.Linq" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="App.xaml.cs">
+            <DependentUpon>App.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="cordovalib\BaseCommand.cs" />
+        <Compile Include="cordovalib\BrowserMouseHelper.cs" />
+        <Compile Include="cordovalib\CommandFactory.cs" />
+        <Compile Include="cordovalib\ConfigHandler.cs" />
+        <Compile Include="cordovalib\CordovaCommandCall.cs" />
+        <Compile Include="cordovalib\CordovaView.xaml.cs">
+            <DependentUpon>CordovaView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="cordovalib\DOMStorageHelper.cs" />
+        <Compile Include="cordovalib\ImageExifHelper.cs" />
+        <Compile Include="cordovalib\JSON\JsonHelper.cs" />
+        <Compile Include="cordovalib\NativeExecution.cs" />
+        <Compile Include="cordovalib\OrientationHelper.cs" />
+        <Compile Include="cordovalib\PluginResult.cs" />
+        <Compile Include="cordovalib\ScriptCallback.cs" />
+        <Compile Include="MainPage.xaml.cs">
+            <DependentUpon>MainPage.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\Capture.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ApplicationDefinition Include="App.xaml">
+            <SubType>Designer</SubType>
+            <Generator>MSBuild:Compile</Generator>
+        </ApplicationDefinition>
+        <Page Include="MainPage.xaml">
+            <SubType>Designer</SubType>
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Include="cordovalib\CordovaView.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="cordova\lib\build.js" />
+        <None Include="cordova\lib\clean.js" />
+        <None Include="cordova\lib\deploy.js" />
+        <None Include="cordova\lib\log.js" />
+        <None Include="cordova\lib\target-list.js" />
+        <Content Include="config.xml" />
+        <Content Include="Images\**" />
+        <Content Include="resources\notification-beep.wav" />
+        <None Include="cordova\build.bat" />
+        <None Include="cordova\clean.bat" />
+        <None Include="cordova\lib\install-device.bat" />
+        <None Include="cordova\lib\install-emulator.bat" />
+        <None Include="cordova\lib\list-devices.bat" />
+        <None Include="cordova\lib\list-emulator-images.bat" />
+        <None Include="cordova\lib\list-started-emulators.bat" />
+        <None Include="cordova\lib\start-emulator.bat" />
+        <None Include="cordova\log.bat" />
+        <None Include="cordova\run.bat" />
+        <None Include="cordova\version.bat" />
+        <None Include="VERSION" />
+        <Content Include="CordovaSourceDictionary.xml">
+            <SubType>Designer</SubType>
+        </Content>
+        <None Include="BuildManifestProcessor.js" />
+        <None Include="Properties\AppManifest.xml">
+            <SubType>Designer</SubType>
+        </None>
+        <None Include="Properties\WMAppManifest.xml">
+            <SubType>Designer</SubType>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="ApplicationIcon.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Background.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="SplashScreenImage.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <WCFMetadata Include="Service References\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\Accelerometer.cs" />
+        <Compile Include="Plugins\AudioFormatsHelper.cs" />
+        <Compile Include="Plugins\AudioPlayer.cs" />
+        <Compile Include="Plugins\Battery.cs" />
+        <Compile Include="Plugins\Camera.cs" />
+        <Compile Include="Plugins\Compass.cs" />
+        <Compile Include="Plugins\Contacts.cs" />
+        <Compile Include="Plugins\DebugConsole.cs" />
+        <Compile Include="Plugins\Device.cs" />
+        <Compile Include="Plugins\File.cs" />
+        <Compile Include="Plugins\FileTransfer.cs" />
+        <Compile Include="Plugins\GeoLocation.cs" />
+        <Compile Include="Plugins\Globalization.cs" />
+        <Compile Include="Plugins\InAppBrowser.cs" />
+        <Compile Include="Plugins\Media.cs" />
+        <Compile Include="Plugins\MimeTypeMapper.cs" />
+        <Compile Include="Plugins\NetworkStatus.cs" />
+        <Compile Include="Plugins\Notification.cs" />
+        <Compile Include="Plugins\UI\AudioCaptureTask.cs" />
+        <Compile Include="Plugins\UI\AudioRecorder.xaml.cs">
+            <DependentUpon>AudioRecorder.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\UI\ImageCapture.xaml.cs">
+            <DependentUpon>ImageCapture.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\UI\NotificationBox.xaml.cs">
+            <DependentUpon>NotificationBox.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\UI\VideoCaptureTask.cs" />
+        <Compile Include="Plugins\UI\VideoRecorder.xaml.cs">
+            <DependentUpon>VideoRecorder.xaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <Page Include="Plugins\UI\AudioRecorder.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Plugins\UI\ImageCapture.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Plugins\UI\NotificationBox.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Plugins\UI\VideoRecorder.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+    <ProjectExtensions />
+    <PropertyGroup>
+        <PreBuildEvent>CScript "$(ProjectDir)/BuildManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PostBuildEvent>
+        </PostBuildEvent>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="www\Bin\SeedWebsite.dll" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Bin\SeedWebsite.dll.refresh" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\config.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\cordova.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\app.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\index.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Global.asax" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\img\logo.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\app.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\directives.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\filters.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\index.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\services.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular-loader.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular-loader.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\version.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\partials\partial1.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\partials\partial2.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-36-ldpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-48-mdpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-72-hdpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-96-xhdpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada\icon-128.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada-wac\icon-48-type5.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada-wac\icon-50-type3.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada-wac\icon-80-type4.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\blackberry\icon-80.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-57-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-57.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-72-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-72.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\tizen\icon-128.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\webos\icon-64.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\windows-phone\icon-173-tile.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\windows-phone\icon-48.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\windows-phone\icon-62-tile.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-hdpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-hdpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-ldpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-ldpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-mdpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-mdpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-xhdpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-xhdpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada\screen-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada-wac\screen-type3.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada-wac\screen-type4.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada-wac\screen-type5.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\blackberry\screen-225.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-landscape-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-portrait-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-landscape-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-portrait-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-portrait-568h-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\tizen\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\webos\screen-64.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\windows-phone\screen-portrait.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-bootstrap-prettify.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-bootstrap-prettify.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-bootstrap.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-bootstrap.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-cookies.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-cookies.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-loader.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-loader.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-mocks.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-resource.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-resource.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-sanitize.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-sanitize.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-scenario.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_af-na.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_af-za.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_af.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_am-et.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_am.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-001.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-ae.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-bh.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-dz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-eg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-iq.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-jo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-kw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-lb.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-ly.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-ma.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-om.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-qa.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-sa.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-sd.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-sy.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-tn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar-ye.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ar.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_bg-bg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_bg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_bn-bd.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_bn-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_bn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ca-ad.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ca-es.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ca.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_chr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_cs-cz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_cs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_cy.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_da-dk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_da.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de-at.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de-be.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de-ch.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de-de.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de-li.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de-lu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_de.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_el-cy.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_el-gr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_el-polyton.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_el.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-as.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-au.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-bb.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-be.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-bm.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-bw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-bz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-ca.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-dsrt-us.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-dsrt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-fm.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-gb.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-gu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-gy.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-hk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-ie.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-iso.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-jm.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-mh.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-mp.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-mt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-mu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-na.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-nz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-ph.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-pk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-pr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-pw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-sg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-tc.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-tt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-um.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-us.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-vg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-vi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-za.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-zw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en-zz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_en.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-419.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-ar.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-bo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-cl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-co.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-cr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-do.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-ea.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-ec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-es.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-gq.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-gt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-hn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-ic.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-mx.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-ni.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-pa.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-pe.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-pr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-py.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-sv.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-us.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-uy.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es-ve.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_es.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_et-ee.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_et.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_eu-es.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_eu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fa-af.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fa-ir.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fa.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fi-fi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fil-ph.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fil.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-be.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-bf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-bi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-bj.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-bl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-ca.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-cd.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-cf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-cg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-ch.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-ci.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-cm.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-dj.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-fr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-ga.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-gf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-gn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-gp.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-gq.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-km.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-lu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-mc.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-mf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-mg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-ml.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-mq.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-ne.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-re.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-rw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-sn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-td.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-tg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr-yt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_fr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_gl-es.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_gl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_gsw-ch.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_gsw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_gu-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_gu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_haw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_he-il.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_he.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_hi-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_hi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_hr-hr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_hr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_hu-hu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_hu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_id-id.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_id.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_is-is.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_is.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_it-ch.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_it-it.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_it-sm.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_it.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_iw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ja-jp.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ja.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_kn-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_kn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ko-kr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ko.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ln-cd.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ln-cg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ln.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_lt-lt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_lt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_lv-lv.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_lv.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ml-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ml.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_mo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_mr-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_mr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ms-bn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ms-my.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ms.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_mt-mt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_mt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_nl-aw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_nl-be.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_nl-cw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_nl-nl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_nl-sx.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_nl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_no.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_or-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_or.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pl-pl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt-ao.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt-br.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt-gw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt-mz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt-pt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt-st.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_pt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ro-md.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ro-ro.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ro.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ru-md.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ru-ru.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ru-ua.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ru.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sk-sk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sl-si.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sq-al.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sq.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-cyrl-ba.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-cyrl-me.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-cyrl-rs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-cyrl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-latn-ba.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-latn-me.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-latn-rs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-latn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr-rs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sv-fi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sv-se.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sv.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sw-ke.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sw-tz.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_sw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ta-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ta-lk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ta.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_te-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_te.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_th-th.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_th.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_tl-ph.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_tl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_tr-tr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_tr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_uk-ua.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_uk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ur-in.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ur-pk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_ur.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_vi-vn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_vi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-cn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hans-cn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hans-hk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hans-mo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hans-sg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hans.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hant-hk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hant-mo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hant-tw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hant.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-hk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh-tw.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zh.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zu-za.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\i18n\angular-locale_zu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\helper.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\index.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\jasmine-html.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\jasmine.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\jasmine.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\MIT.LICENSE" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Angular\Async.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Angular\Index.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Home\Index.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Shared\Error.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Shared\_Layout.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Shared\_LayoutAngular.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Shared\_LayoutAngularAsync.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\Web.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Views\_ViewStart.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Web.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\WebWorkbench.mswwsettings" />
+    </ItemGroup>
+</Project>
