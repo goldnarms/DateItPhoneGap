@@ -1,4 +1,4 @@
-﻿/// <reference path="../interfaces/isafeapplyscope.ts" />
+/// <reference path="../interfaces/isafeapplyscope.ts" />
 var dateIt;
 (function (dateIt) {
     'use strict';
@@ -12,18 +12,17 @@ var dateIt;
             this.datacontext = datacontext;
             $scope.isLoggedIn = datacontext.getCurrentUser !== null;
             $scope.user = datacontext.getCurrentUser;
-            $scope.login = function () {
-                return _this.login();
+            $scope.login = function (provider) {
+                return _this.login(provider);
             };
         }
         LoginController.prototype.injection = function () {
             return ["$scope", "$log", "$location", "datacontext", LoginController];
         };
 
-        LoginController.prototype.login = function () {
+        LoginController.prototype.login = function (provider) {
             var _this = this;
-            this.$log.info("Login klikket");
-            this.datacontext.login("facebook").then(function () {
+            this.datacontext.login(provider).then(function () {
                 _this.$scope.isLoggedIn = _this.datacontext.getCurrentUser !== null;
                 _this.$log.info("IsLoggedIn: " + _this.$scope.isLoggedIn);
             }), (function (error) {
@@ -34,4 +33,3 @@ var dateIt;
     })();
     dateIt.LoginController = LoginController;
 })(dateIt || (dateIt = {}));
-//# sourceMappingURL=LoginController.js.map

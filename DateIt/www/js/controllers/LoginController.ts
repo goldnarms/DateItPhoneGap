@@ -3,7 +3,7 @@
 module dateIt {
     'use strict';
     export interface LoginScope extends dateIt.ISafeApplyScope {
-        login: Function;
+        login: (provider: string) => void;
         userName: string;
         password: string;
         isLoggedIn: boolean;
@@ -16,12 +16,11 @@ module dateIt {
         constructor(private $scope: LoginScope, private $log: ng.ILogService, private $location: ng.ILocationService, private datacontext: dateIt.IDatacontext) {
             $scope.isLoggedIn = datacontext.getCurrentUser !== null;
             $scope.user = datacontext.getCurrentUser;
-            $scope.login = () => this.login();
+            $scope.login = (provider: string) => this.login(provider);
         }
 
-        login() {
-            this.$log.info("Login klikket");
-            this.datacontext.login("facebook")
+        login(provider: string) {
+            this.datacontext.login(provider)
                 .then(() => {
                     this.$scope.isLoggedIn = this.datacontext.getCurrentUser !== null;
                     this.$log.info("IsLoggedIn: " + this.$scope.isLoggedIn);
