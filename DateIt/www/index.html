@@ -17,26 +17,72 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+<html data-ng-app="dateIt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>DateIt</title>
+    <script src="https://dateit.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js"></script>
+    <link href="/Content/normalize.css" rel="stylesheet" />
+    <link href="/Content/foundation.min.css" rel="stylesheet" />
+    <link href="/Content/topcoat-mobile-dark.min.css" rel="stylesheet" />
+    <link href="/bower_components/angular-macgyver/lib/macgyver.css" rel="stylesheet" />
+    <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/themes/base/jquery.ui.tooltip.css" rel="stylesheet" />
+    <link href="css/animation.css" rel="stylesheet" />
+    <link href="css/fontello-codes.css" rel="stylesheet" />
+    <link href="css/fontello-embedded.css" rel="stylesheet" />
+    <link href="css/fontello.css" rel="stylesheet" />
+    <script src="//use.edgefonts.net/lato.js"></script>
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+    <!--    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>-->
+    <div class="topcoat-navigation-bar">
+        <div class="topcoat-navigation-bar__item center full">
+            <h1 class="topcoat-navigation-bar__title">DateIt <a data-ng-href="#/login"><i class="icon-cog" style="position: absolute; right: 30px"></i></a></h1>
+
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+    </div>
+    <div class="content">
+        <ng-view></ng-view>
+    </div>
+
+    <div id="footer">
+        <ul class="small-block-grid-4 text-center">
+            <li><a data-ng-href="#/infridge"><i class="icon-list"></i></a></li>
+            <li><a data-ng-href="#/addByText"><i class="icon-font"></i></a></li>
+            <li><a data-ng-href="#/addByText"><i class="icon-camera"></i></a></li>
+            <li><a data-ng-href="#/addByText"><i class="icon-barcode"></i></a></li>
+        </ul>
+    </div>
+    <!--</div>-->
+    <!--    <script type="text/javascript" src="cordova.js"></script>-->
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script src="/Scripts/jquery-ui-1.10.3.js"></script>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-resource.js"></script>
+    <script src="/Scripts/underscore.js"></script>
+    <script src="/lib/macgyver-core.js"></script>
+    <script src="/lib/macgyver.js"></script>
+    <script src="/node_modules/angularjs-scope.safeapply/src/Scope.SafeApply.js"></script>
+    <script src="/js/services/Datacontext.js"></script>
+    <script src="/js/controllers/AddItemController.js"></script>
+    <script src="/js/controllers/FridgeController.js"></script>
+    <script src="/js/controllers/LoginController.js"></script>
+    <script src="/js/models/DateItItem.js"></script>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
 </html>

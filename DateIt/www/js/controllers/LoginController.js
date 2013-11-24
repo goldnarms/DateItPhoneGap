@@ -13,8 +13,8 @@ var dateIt;
             $scope.isLoggedIn = datacontext.getCurrentUser !== null;
             $log.info(datacontext.getCurrentUser());
             $scope.user = datacontext.getCurrentUser();
-            $scope.login = function () {
-                return _this.login();
+            $scope.login = function (provider) {
+                return _this.login(provider);
             };
             $scope.logout = function () {
                 return _this.logout();
@@ -33,10 +33,10 @@ var dateIt;
             this.$log.info("IsLoggedIn: " + this.$scope.isLoggedIn);
         };
 
-        LoginController.prototype.login = function () {
+        LoginController.prototype.login = function (provider) {
             var _this = this;
             this.$log.info("Login klikket");
-            this.datacontext.login("facebook").then(function (u) {
+            this.datacontext.login(provider).then(function (u) {
                 _this.$log.info(u);
                 _this.$scope.isLoggedIn = _this.datacontext.getCurrentUser() !== null;
                 _this.$scope.user = _this.datacontext.getCurrentUser();
@@ -51,4 +51,3 @@ var dateIt;
     })();
     dateIt.LoginController = LoginController;
 })(dateIt || (dateIt = {}));
-//# sourceMappingURL=LoginController.js.map
