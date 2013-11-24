@@ -1,6 +1,6 @@
 {
   "name": "blueimp-tmpl",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "title": "JavaScript Templates",
   "description": "< 1KB lightweight, fast & powerful JavaScript templating engine with zero dependencies. Compatible with server-side environments like node.js, module loaders like RequireJS and all web browsers.",
   "keywords": [
@@ -36,11 +36,11 @@
     "uglify-js": "2.3.6"
   },
   "main": "js/tmpl.js",
-  "_release": "2.3.1",
+  "_release": "2.4.0",
   "_resolution": {
     "type": "version",
-    "tag": "2.3.1",
-    "commit": "508e6ef7f719232bd899b328164e1b89eeec3a6c"
+    "tag": "2.4.0",
+    "commit": "eb72edb85f517627bbbcade738a71f2b499284ec"
   },
   "_source": "git://github.com/blueimp/JavaScript-Templates.git",
   "_target": ">=2.3.0",

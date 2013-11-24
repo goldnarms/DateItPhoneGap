@@ -5,8 +5,9 @@ module dateIt {
         id: number;
         itemId: number;
         item: dateIt.Item;
-        userId: number;
+        userId: any;
         user: dateIt.User;
         expireDate: Date;
+        name: string;
     }
 }

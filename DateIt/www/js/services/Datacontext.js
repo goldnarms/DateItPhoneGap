@@ -16,8 +16,27 @@ var dateIt;
             return dateItTable.read();
         };
 
+        DatacontextService.prototype.getItemByName = function (itemName) {
+            var dateItTable = this.client.getTable('Item');
+            return dateItTable.where({ name: itemName }).read();
+        };
+
+        DatacontextService.prototype.getItems = function () {
+            var dateItTable = this.client.getTable('Item');
+            return dateItTable.read();
+        };
+
         DatacontextService.prototype.addDateItItem = function (item, callback) {
-            this.client.getTable("DateItItem").insert(item).success(callback);
+            this.client.getTable("DateItItem").insert(item).done(callback);
+        };
+
+        DatacontextService.prototype.addItem = function (item) {
+            return this.client.getTable("Item").insert(item);
+        };
+
+        DatacontextService.prototype.logout = function () {
+            console.log("DataContext logout");
+            this.client.logout();
         };
 
         DatacontextService.prototype.login = function (provider) {

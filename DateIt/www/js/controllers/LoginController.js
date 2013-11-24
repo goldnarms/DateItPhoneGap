@@ -11,21 +11,38 @@ var dateIt;
             this.$location = $location;
             this.datacontext = datacontext;
             $scope.isLoggedIn = datacontext.getCurrentUser !== null;
-            $scope.user = datacontext.getCurrentUser;
+            $log.info(datacontext.getCurrentUser());
+            $scope.user = datacontext.getCurrentUser();
             $scope.login = function () {
                 return _this.login();
+            };
+            $scope.logout = function () {
+                return _this.logout();
             };
         }
         LoginController.prototype.injection = function () {
             return ["$scope", "$log", "$location", "datacontext", LoginController];
         };
 
+        LoginController.prototype.logout = function () {
+            this.$log.info("Logout klikket");
+            this.datacontext.logout();
+            this.$scope.isLoggedIn = this.datacontext.getCurrentUser() !== null;
+            this.$scope.user = null;
+            this.$log.info(this.datacontext.getCurrentUser());
+            this.$log.info("IsLoggedIn: " + this.$scope.isLoggedIn);
+        };
+
         LoginController.prototype.login = function () {
             var _this = this;
             this.$log.info("Login klikket");
-            this.datacontext.login("facebook").then(function () {
-                _this.$scope.isLoggedIn = _this.datacontext.getCurrentUser !== null;
+            this.datacontext.login("facebook").then(function (u) {
+                _this.$log.info(u);
+                _this.$scope.isLoggedIn = _this.datacontext.getCurrentUser() !== null;
+                _this.$scope.user = _this.datacontext.getCurrentUser();
+                _this.$log.info(_this.datacontext.getCurrentUser());
                 _this.$log.info("IsLoggedIn: " + _this.$scope.isLoggedIn);
+                _this.$scope.$apply();
             }), (function (error) {
                 alert(error);
             });

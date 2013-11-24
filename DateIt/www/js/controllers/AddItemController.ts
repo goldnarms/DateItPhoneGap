@@ -1,10 +1,16 @@
 ﻿/// <reference path="../_all.ts" />
+/// <reference path="../../Scripts/typings/moment/moment.d.ts" />
 module dateIt {
     'use strict';
     export interface IAddItemScope extends dateIt.ISafeApplyScope {
-        addDateItItem: Function;
+        addDateItItem: (dateItItem: dateIt.DateItItem) => void;
+        itemSelected: () => void;
         dateItItem: dateIt.DateItItem;
-        uniqueItems: string[];
+        uniqueItems: any;
+        mstep: number;
+        hstep: number;
+        items: string[];
+        selected: boolean;
     }
 
     export class AddItemController {
@@ -13,18 +19,36 @@ module dateIt {
         }
         constructor(private $scope: IAddItemScope, private $log: ng.ILogService, private $location: ng.ILocationService, private datacontext: dateIt.IDatacontext) {
             $scope.addDateItItem = (item) => this.addDateItItem(item);
-            datacontext.getDateItItems().then((result) =>{
-                var uniqueItems = _.pluck(result, 'name');
-                var replacedItems = _.map(uniqueItems, (i) => {return i.toString() })
-                $log.info(replacedItems);
-                var replaced = uniqueItems.toString().replace(/\"/g, '\'')
-
-                $scope.uniqueItems = replacedItems;
+            $scope.itemSelected = () => this.itemSelected();
+            $scope.dateItItem = <dateIt.DateItItem>{ expireDate: moment().toDate()};
+            datacontext.getItems().then((result) =>{
+                $scope.selected = undefined;
+                $scope.items = result;
             });
         }
 
-        addDateItItem(item: dateIt.DateItItem): void {
-            this.datacontext.addDateItItem(item, () => {
+        itemSelected(): void {
+            this.datacontext.getItemByName(this.$scope.dateItItem.name).done((results) => {
+                this.$log.info(results);
+                var item = <dateIt.Item>results[0];
+                this.$scope.dateItItem.itemId = item.id;
+                var date = moment();
+                date.add("d", item.shelflifeInDays);
+                this.$scope.dateItItem.expireDate = date.toDate();
+            });
+        }
+
+        addDateItItem(dateItItem: dateIt.DateItItem): void {
+            this.datacontext.getItemByName(this.$scope.dateItItem.name).done((results) => {
+                this.$log.info(results);
+                if (results.length == 0) {
+                    var expireDate = moment(dateItItem.expireDate);
+                    var shelfLife = expireDate.diff(moment(), "days");
+                    var item = <dateIt.Item>{ name: dateItItem.name, shelflifeInDays: shelfLife };
+                    this.datacontext.addItem(item);
+                }
+            });
+            this.datacontext.addDateItItem(dateItItem, () => {
                 this.$location.path("/");
             });
         }

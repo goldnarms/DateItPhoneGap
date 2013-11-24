@@ -13,11 +13,11 @@
 @*    <link href="/Content/bootstrap.min.css" rel="stylesheet" />*@
     @*    <link href="/Content/bootstrap-responsive.min.css" rel="stylesheet" />*@
     <link href="/Content/normalize.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="/Content/foundation.min.css" rel="stylesheet" />
     <link href="/Content/topcoat-mobile-dark.min.css" rel="stylesheet" />
-    <link href="/bower_components/angular-macgyver/lib/macgyver.css" rel="stylesheet" />
-    <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" />
-    <link href="/Content/themes/base/jquery.ui.tooltip.css" rel="stylesheet" />
+@*    <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/themes/base/jquery.ui.tooltip.css" rel="stylesheet" />*@
     <script src="//use.edgefonts.net/lato.js"></script>
     <link rel="stylesheet" href="/css/app.css" />
 </head>
@@ -33,13 +33,20 @@
     </ul>
 
     @RenderBody()
-    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script src="/Scripts/jquery-2.0.3.min.js"></script>
     <script src="/Scripts/jquery-ui-1.10.3.js"></script>
     <script src="/Scripts/angular.js"></script>
     <script src="/Scripts/angular-resource.js"></script>
+    <script src="/Scripts/angular-route.min.js"></script>
+    <script src="/Scripts/angular-cookies.min.js"></script>
     <script src="/Scripts/underscore.js"></script>
-    <script src="/lib/macgyver-core.js"></script>
-    <script src="/lib/macgyver.js"></script>
+
+    @*    <script src="/lib/macgyver-core.js"></script>
+    <script src="/lib/macgyver.js"></script>*@
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-moment/angular-moment.min.js"></script>
+    <script src="/bower_components/angular-localstorage/angular-local-storage.js"></script>
+    <script src="/Scripts/ui-bootstrap-0.6.0.js"></script>
     <script src="/node_modules/angularjs-scope.safeapply/src/Scope.SafeApply.js"></script>
     <script src="/js/services/Datacontext.js"></script>
     <script src="/js/controllers/AddItemController.js"></script>

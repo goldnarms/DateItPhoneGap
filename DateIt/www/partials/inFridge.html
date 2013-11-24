@@ -1,6 +1,6 @@
 <h3>Items in fridge</h3>
 <ul>
-    <li data-ng-repeat="fridgeItem in inFridgeItems">
-        {{fridgeItem.name}}
+    <li data-ng-repeat="fridgeItem in inFridgeItems | orderBy:'date':false">
+        <span>{{fridgeItem.name}} {{fridgeItem.expireDate  | date:'short'}}</span>
     </li>
 </ul>
