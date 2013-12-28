@@ -51,4 +51,3 @@ var dateIt;
     })();
     dateIt.DatacontextService = DatacontextService;
 })(dateIt || (dateIt = {}));
-//# sourceMappingURL=Datacontext.js.map

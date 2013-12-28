@@ -3,10 +3,6 @@
 // Definitions by: Boris Yankov <https://github.com/borisyankov/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-interface EventTarget {
-    result: any;
-}
-
 interface GeolocationError {
     code: number;
     message: string;
@@ -54,7 +50,7 @@ interface CameraOptions {
     mediaType?: number;
     correctOrientation?: boolean;
     saveToPhotoAlbum?: boolean;
-    popoverOptions?: number;
+    popoverOptions?: CameraPopoverOptions;
 }
 
 interface CameraPictureSourceTypeObject {
@@ -478,6 +474,7 @@ declare var Media: {
 interface Notification {
     alert(message: string, alertCallback: Function, title?: string, buttonName?: string): void;
     confirm(message: string, confirmCallback: Function, title?: string, buttonLabels?: string): void;
+	confirm(message: string, confirmCallback: Function, title?: string, buttonLabels?: string[]): void;
     beep(times: number): void;
     vibrate(milliseconds: number): void;
 }

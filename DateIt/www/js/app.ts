@@ -10,7 +10,7 @@ module dateIt {
     controllers.controller("loginCtrl", dateIt.LoginController.prototype.injection());
     controllers.controller("addItemCtrl", dateIt.AddItemController.prototype.injection());
 
-    var app = angular.module("dateIt", ["ngRoute", "ui.bootstrap", "Scope.safeApply", "dateIt.Controllers", "dateIt.Services", "angularMoment", "LocalStorageModule"]);
+    var app = angular.module("dateIt", ["ngRoute", "ngStorage", "ui.bootstrap", "Scope.safeApply", "dateIt.Controllers", "dateIt.Services", "angularMoment", "LocalStorageModule"]);
         //.service("datacontext", dateIt.DatacontextService.prototype.injection());;
     
     // Declare app level module which depends on filters, and services
