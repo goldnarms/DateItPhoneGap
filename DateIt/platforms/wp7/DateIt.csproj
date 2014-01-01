@@ -1,0 +1,3963 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProductVersion>10.0.20506</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{3677C1B7-D68B-4CF9-BF8A-E869D437A6DF}</ProjectGuid>
+        <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>com.example.hello</RootNamespace>
+        <AssemblyName>com.example.hello</AssemblyName>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+        <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+        <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+        <SilverlightApplication>true</SilverlightApplication>
+        <SupportedCultures>
+        </SupportedCultures>
+        <XapOutputs>true</XapOutputs>
+        <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+        <XapFilename>com.example.hello.xap</XapFilename>
+        <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+        <SilverlightAppEntry>com.example.hello.App</SilverlightAppEntry>
+        <ValidateXaml>true</ValidateXaml>
+        <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>Bin\Debug</OutputPath>
+        <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP7</DefineConstants>
+        <NoStdLib>true</NoStdLib>
+        <NoConfig>true</NoConfig>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>Bin\Release</OutputPath>
+        <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+        <NoStdLib>true</NoStdLib>
+        <NoConfig>true</NoConfig>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Microsoft.Devices.Sensors" />
+        <Reference Include="Microsoft.Phone" />
+        <Reference Include="Microsoft.Phone.Interop" />
+        <Reference Include="Microsoft.Xna.Framework" />
+        <Reference Include="System.Device" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.Servicemodel.Web" />
+        <Reference Include="System.Windows" />
+        <Reference Include="system" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Net" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Xml.Linq" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="App.xaml.cs">
+            <DependentUpon>App.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="cordovalib\BaseCommand.cs" />
+        <Compile Include="cordovalib\BrowserMouseHelper.cs" />
+        <Compile Include="cordovalib\CommandFactory.cs" />
+        <Compile Include="cordovalib\ConfigHandler.cs" />
+        <Compile Include="cordovalib\CordovaCommandCall.cs" />
+        <Compile Include="cordovalib\CordovaView.xaml.cs">
+            <DependentUpon>CordovaView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="cordovalib\DOMStorageHelper.cs" />
+        <Compile Include="cordovalib\ImageExifHelper.cs" />
+        <Compile Include="cordovalib\JSON\JsonHelper.cs" />
+        <Compile Include="cordovalib\NativeExecution.cs" />
+        <Compile Include="cordovalib\OrientationHelper.cs" />
+        <Compile Include="cordovalib\PluginResult.cs" />
+        <Compile Include="cordovalib\ScriptCallback.cs" />
+        <Compile Include="MainPage.xaml.cs">
+            <DependentUpon>MainPage.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\Capture.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ApplicationDefinition Include="App.xaml">
+            <SubType>Designer</SubType>
+            <Generator>MSBuild:Compile</Generator>
+        </ApplicationDefinition>
+        <Page Include="MainPage.xaml">
+            <SubType>Designer</SubType>
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Include="cordovalib\CordovaView.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="cordova\lib\build.js" />
+        <None Include="cordova\lib\clean.js" />
+        <None Include="cordova\lib\deploy.js" />
+        <None Include="cordova\lib\log.js" />
+        <None Include="cordova\lib\target-list.js" />
+        <Content Include="config.xml" />
+        <Content Include="Images\**" />
+        <Content Include="resources\notification-beep.wav" />
+        <None Include="cordova\build.bat" />
+        <None Include="cordova\clean.bat" />
+        <None Include="cordova\lib\install-device.bat" />
+        <None Include="cordova\lib\install-emulator.bat" />
+        <None Include="cordova\lib\list-devices.bat" />
+        <None Include="cordova\lib\list-emulator-images.bat" />
+        <None Include="cordova\lib\list-started-emulators.bat" />
+        <None Include="cordova\lib\start-emulator.bat" />
+        <None Include="cordova\log.bat" />
+        <None Include="cordova\run.bat" />
+        <None Include="cordova\version.bat" />
+        <None Include="VERSION" />
+        <Content Include="CordovaSourceDictionary.xml">
+            <SubType>Designer</SubType>
+        </Content>
+        <None Include="BuildManifestProcessor.js" />
+        <None Include="Properties\AppManifest.xml">
+            <SubType>Designer</SubType>
+        </None>
+        <None Include="Properties\WMAppManifest.xml">
+            <SubType>Designer</SubType>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="ApplicationIcon.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Background.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="SplashScreenImage.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <WCFMetadata Include="Service References\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\Accelerometer.cs" />
+        <Compile Include="Plugins\AudioFormatsHelper.cs" />
+        <Compile Include="Plugins\AudioPlayer.cs" />
+        <Compile Include="Plugins\Battery.cs" />
+        <Compile Include="Plugins\Camera.cs" />
+        <Compile Include="Plugins\Compass.cs" />
+        <Compile Include="Plugins\Contacts.cs" />
+        <Compile Include="Plugins\DebugConsole.cs" />
+        <Compile Include="Plugins\Device.cs" />
+        <Compile Include="Plugins\File.cs" />
+        <Compile Include="Plugins\FileTransfer.cs" />
+        <Compile Include="Plugins\GeoLocation.cs" />
+        <Compile Include="Plugins\Globalization.cs" />
+        <Compile Include="Plugins\InAppBrowser.cs" />
+        <Compile Include="Plugins\Media.cs" />
+        <Compile Include="Plugins\MimeTypeMapper.cs" />
+        <Compile Include="Plugins\NetworkStatus.cs" />
+        <Compile Include="Plugins\Notification.cs" />
+        <Compile Include="Plugins\UI\AudioCaptureTask.cs" />
+        <Compile Include="Plugins\UI\AudioRecorder.xaml.cs">
+            <DependentUpon>AudioRecorder.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\UI\ImageCapture.xaml.cs">
+            <DependentUpon>ImageCapture.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\UI\NotificationBox.xaml.cs">
+            <DependentUpon>NotificationBox.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Plugins\UI\VideoCaptureTask.cs" />
+        <Compile Include="Plugins\UI\VideoRecorder.xaml.cs">
+            <DependentUpon>VideoRecorder.xaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <Page Include="Plugins\UI\AudioRecorder.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Plugins\UI\ImageCapture.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Plugins\UI\NotificationBox.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Plugins\UI\VideoRecorder.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+    <ProjectExtensions />
+    <PropertyGroup>
+        <PreBuildEvent>CScript "$(ProjectDir)/BuildManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PostBuildEvent>
+        </PostBuildEvent>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\org.apache.cordova.camera\Camera.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\angular-csp.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\angular.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\angular.min.js.gzip" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\angular.min.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-bootstrap\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-bootstrap\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-bootstrap\ui-bootstrap.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-bootstrap\ui-bootstrap.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\angular-local-storage.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\demo\demo-app.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\demo\demo-style.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\demo\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\Gruntfile.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\LICENSE" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-localstorage\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\events\base.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\events\keydown.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\events\pause_typing.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\events\window_resize.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\table\mac_columns.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\table\table_cell.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\table\table_row.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\table\table_section.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\directives\table\table_view.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\filters\pluralize.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\filters\timestamp.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\filters\underscore.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\autocomplete.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\datepicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\events\base.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\events\keydown.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\events\pause_typing.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\events\window_resize.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\file_upload.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\focus_on_event.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\menu.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\modal.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\placeholder.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\scroll_spy.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\spinner.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\table\mac_columns.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\table\table_cell.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\table\table_row.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\table\table_section.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\table\table_view.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\tag_autocomplete.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\tag_input.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\time.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\directives\tooltip.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\filters\pluralize.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\filters\timestamp.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\filters\underscore.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\services\modal.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\html\services\scroll_spy.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\services\modal.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-macgyver\docs\services\scroll_spy.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-mocks\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-mocks\angular-mocks.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-mocks\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-mocks\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\.bowerrc" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\.jshintrc" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\.travis.yml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\angular-moment.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\angular-moment.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\CHANGELOG.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\Gruntfile.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\karma.conf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-moment\tests.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\.gitattributes" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\.travis.yml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\CHANGELOG.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\CONTRIBUTING.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\docs\css\style.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\docs\nav.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\Gruntfile.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\karma.conf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\LICENSE" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\changelog.tpl.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\app.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\demo.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\github-16px.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\img\glyphicons-halflings-white.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\img\glyphicons-halflings.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\plunker.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\rainbow-generic.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\rainbow-html.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\rainbow-javascript.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\rainbow.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\assets\rainbow.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\demo\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\test-lib\angular-mocks.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\test-lib\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\test-lib\helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\test-lib\jquery-1.8.2.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\misc\validate-commit-msg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\accordion\accordion.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\accordion\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\accordion\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\accordion\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\accordion\test\accordionSpec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\alert\alert.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\alert\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\alert\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\alert\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\alert\test\alert.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\bindHtml\bindHtml.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\buttons\buttons.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\buttons\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\buttons\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\buttons\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\buttons\test\buttons.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\carousel\carousel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\carousel\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\carousel\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\carousel\docs\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\carousel\test\carousel.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\collapse\collapse.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\collapse\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\collapse\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\collapse\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\collapse\test\collapse.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\datepicker\datepicker.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\datepicker\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\datepicker\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\datepicker\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\datepicker\test\datepicker.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\dropdownToggle\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\dropdownToggle\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\dropdownToggle\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\dropdownToggle\dropdownToggle.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\dropdownToggle\test\dropdownToggleSpec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\modal.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\test\modal.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\test\modalWindow.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\modal\test\stackedMap.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\pagination\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\pagination\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\pagination\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\pagination\pagination.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\pagination\test\pager.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\pagination\test\pagination.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\popover\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\popover\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\popover\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\popover\popover.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\popover\test\popoverSpec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\position\position.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\position\test\test.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\progressbar\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\progressbar\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\progressbar\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\progressbar\progressbar.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\progressbar\test\progressbar.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\rating\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\rating\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\rating\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\rating\rating.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\rating\test\rating.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tabs\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tabs\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tabs\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tabs\tabs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tabs\test\tabsSpec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\timepicker\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\timepicker\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\timepicker\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\timepicker\test\timepicker.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\timepicker\timepicker.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tooltip\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tooltip\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tooltip\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tooltip\test\tooltip.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\tooltip\tooltip.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\transition\test\transition.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\transition\transition.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\docs\demo.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\docs\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\docs\readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\test\typeahead-highlight.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\test\typeahead-parser.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\test\typeahead-popup.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\test\typeahead.spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\src\typeahead\typeahead.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\accordion\accordion-group.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\accordion\accordion.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\alert\alert.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\carousel\carousel.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\carousel\slide.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\datepicker\datepicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\datepicker\popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\dialog\message.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\modal\backdrop.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\modal\window.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\pagination\pager.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\pagination\pagination.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\popover\popover.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\progressbar\bar.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\progressbar\progress.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\rating\rating.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\tabs\tab.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\tabs\tabset-titles.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\tabs\tabset.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\timepicker\timepicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\tooltip\tooltip-html-unsafe-popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\tooltip\tooltip-popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\typeahead\typeahead-match.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\angular-ui-bootstrap\template\typeahead\typeahead-popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\js\canvas-to-blob.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\js\canvas-to-blob.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\Makefile" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\test\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-canvas-to-blob\test\test.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\css\demo.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\css\vendor\Jcrop.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\css\vendor\jquery.Jcrop.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image-exif-map.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image-exif.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image-ios.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image-meta.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image-orientation.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\load-image.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\js\vendor\jquery.Jcrop.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\Makefile" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\test\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-load-image\test\test.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\css\demo.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\js\compile.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\js\demo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\js\runtime.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\js\tmpl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\js\tmpl.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\Makefile" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\test\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\blueimp-tmpl\test\test.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\component.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\composer.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\jquery-migrate.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\jquery-migrate.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\jquery.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\jquery.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\jquery.min.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\angularjs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\basic-plus.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\basic.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\blueimp-file-upload.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\CONTRIBUTING.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\cors\postmessage.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\cors\result.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\css\demo-ie8.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\css\demo.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\css\style.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\img\loading.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\img\progressbar.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\jquery-ui.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\app.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-audio.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-image.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-jquery-ui.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-process.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-validate.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload-video.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.fileupload.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\jquery.iframe-transport.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\main.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-go\app\main.go" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-go\app.yaml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-go\static\favicon.ico" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-go\static\robots.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-python\app.yaml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-python\main.py" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-python\static\favicon.ico" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\gae-python\static\robots.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\node\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\node\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\node\public\files\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\node\server.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\node\tmp\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\php\files\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\php\files\.htaccess" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\php\index.php" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\server\php\UploadHandler.php" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\test\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery-file-upload\test\test.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\.editorconfig" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\.gitattributes" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\.jshintrc" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\.mailmap" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\AUTHORS.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\CONTRIBUTING.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\collapsible.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\custom-icons.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\fillspace.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\hoverintent.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\no-auto-height.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\accordion\sortable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\addClass\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\addClass\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\animate\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\animate\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\categories.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\combobox.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\custom-data.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\folding.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\images\jqueryui_32x32.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\images\jquery_32x32.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\images\sizzlejs_32x32.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\images\transparent_1x1.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\images\ui-anim_basic_16x16.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\london.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\maxheight.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\multiple-remote.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\multiple.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\remote-jsonp.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\remote-with-cache.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\remote.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\search.php" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\autocomplete\xml.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\checkbox.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\icons.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\radio.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\splitbutton.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\button\toolbar.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\alt-field.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\animation.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\buttonbar.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\date-formats.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\date-range.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\dropdown-month-year.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\icon-trigger.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\images\calendar.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\inline.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\jquery.ui.datepicker-ar.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\jquery.ui.datepicker-fr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\jquery.ui.datepicker-he.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\jquery.ui.datepicker-zh-TW.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\localization.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\min-max.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\multiple-calendars.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\other-months.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\datepicker\show-week.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\demos.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\animated.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\modal-confirmation.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\modal-form.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\modal-message.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\dialog\modal.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\constrain-movement.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\cursor-style.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\delay-start.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\events.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\handle.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\revert.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\scroll.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\snap-to.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\sortable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\draggable\visual-feedback.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\accepted-elements.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras2.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras2_min.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras3.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras3_min.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras4.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras4_min.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\images\high_tatras_min.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\photo-manager.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\propagation.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\revert.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\shopping-cart.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\droppable\visual-feedback.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\effect\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\effect\easing.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\effect\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\hide\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\hide\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\calendar.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\demo-config-on-tile.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\demo-config-on.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\demo-spindown-closed.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\demo-spindown-open.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\icon-docs-info.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\images\pbar-ani.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\menu\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\menu\icons.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\menu\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\position\cycler.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\position\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\position\images\earth.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\position\images\flight.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\position\images\rocket.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\position\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\progressbar\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\progressbar\images\pbar-ani.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\progressbar\indeterminate.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\progressbar\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\progressbar\label.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\removeClass\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\removeClass\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\animate.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\aspect-ratio.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\constrain-area.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\delay-start.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\helper.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\max-min.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\snap-to-grid.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\synchronous-resize.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\textarea.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\resizable\visual-feedback.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\selectable\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\selectable\display-grid.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\selectable\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\selectable\serialize.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\show\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\show\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\colorpicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\hotelrooms.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\multiple-vertical.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\range-vertical.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\range.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\rangemax.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\rangemin.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\side-scroll.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\slider-vertical.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\slider\steps.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\connect-lists-through-tabs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\connect-lists.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\delay-start.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\display-grid.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\empty-lists.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\items.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\placeholder.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\sortable\portlets.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\currency.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\decimal.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\latlong.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\overflow.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\spinner\time.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\switchClass\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\switchClass\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\ajax\content1.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\ajax\content2.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\ajax\content3-slow.php" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\ajax\content4-broken.php" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\ajax.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\bottom.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\collapsible.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\manipulation.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\mouseover.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\sortable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tabs\vertical.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\toggle\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\toggle\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\toggleClass\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\toggleClass\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\ajax\content1.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\ajax\content2.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\custom-animation.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\custom-content.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\custom-style.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\forms.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\images\st-stephens.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\images\tower-bridge.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\tracking.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\tooltip\video-player.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\widget\default.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\demos\widget\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\globalize.culture.de-DE.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\globalize.culture.ja-JP.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\globalize.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\jquery.mousewheel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\jshint.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\qunit.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\external\qunit.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\Gruntfile.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\jquery-1.9.1.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\MIT-LICENSE.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\.jshintrc" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\index.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\index.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.6.1.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.6.2.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.6.3.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.6.4.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.6.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.7.1.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.7.2.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.7.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.8.0.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.8.1.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.8.2.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.8.3.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.9.0.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery-1.9.1.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\jquery.simulate.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\accordion_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\accordion\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\autocomplete.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\autocomplete_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\autocomplete_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\autocomplete_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\autocomplete_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\autocomplete_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\remote_object_array_labels.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\remote_object_array_values.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\autocomplete\remote_string_array.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\button.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\button_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\button_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\button_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\button_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\button\button_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\core\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\core\core.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\core\core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\core\selector.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\datepicker_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\datepicker\images\calendar.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_deprecated.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_deprecated.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\dialog\dialog_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\draggable\draggable_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\droppable\droppable_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\effects\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\effects\effects.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\effects\effects_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\effects\effects_scale.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\images\jqueryui_32x32.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\menu\menu_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\position\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\position\position.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\position\position_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\progressbar.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\progressbar_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\progressbar_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\progressbar_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\progressbar_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\progressbar\progressbar_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\qunit-composite.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\qunit-composite.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\images\test.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\resizable\resizable_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\selectable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\selectable_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\selectable_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\selectable_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\selectable_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\selectable\selectable_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\slider.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\slider_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\slider_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\slider_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\slider_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\slider\slider_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\sortable\sortable_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\spinner\spinner_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\subsuite.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\swarminject.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\data\test.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tabs\tabs_test_helpers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\testsuite.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\tooltip.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\tooltip_common.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\tooltip_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\tooltip_events.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\tooltip_methods.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\tooltip\tooltip_options.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\widget\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\widget\widget.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\widget\widget_animation.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\widget\widget_core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\unit\widget\widget_extend.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\accordion\icons.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\addClass\queue.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\button\button.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\button\performance.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\accordion_tabs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\datepicker_dialog.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\dialog_widgets.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\draggable_accordion.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\draggable_accordion_accordion_tabs_draggable.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\sortable_accordion_sortable_tabs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\tabs_tabs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\compound\tabs_tooltips.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\dialog\animated.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\dialog\complex-dialogs.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\dialog\form.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\dialog\performance.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\effects\all.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\effects\effects.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\effects\effects.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\effects\scale.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\menu\menu.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\position\position.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\position\position_feedback.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\theme.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\tooltip\animations.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\tooltip\tooltip.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\tests\visual\visual.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\animated-overlay.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-icons_222222_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-icons_454545_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-icons_888888_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.accordion.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.all.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.autocomplete.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.base.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.button.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.core.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.datepicker.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.dialog.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.menu.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.progressbar.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.resizable.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.selectable.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.slider.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.spinner.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.tabs.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.theme.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\themes\base\jquery.ui.tooltip.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\.jshintrc" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-af.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ar-DZ.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ar.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-az.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-be.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-bg.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-bs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ca.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-cs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-cy-GB.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-da.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-de.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-el.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-en-AU.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-en-GB.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-en-NZ.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-eo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-es.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-et.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-eu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-fa.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-fi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-fo.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-fr-CA.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-fr-CH.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-fr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-gl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-he.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-hi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-hr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-hu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-hy.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-id.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-is.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-it.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ja.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ka.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-kk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-km.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ko.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ky.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-lb.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-lt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-lv.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-mk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ml.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ms.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-nb.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-nl-BE.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-nl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-nn.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-no.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-pl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-pt-BR.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-pt.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-rm.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ro.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ru.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-sk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-sl.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-sq.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-sr-SR.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-sr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-sv.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-ta.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-th.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-tj.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-tr.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-uk.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-vi.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-zh-CN.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-zh-HK.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\i18n\jquery.ui.datepicker-zh-TW.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.accordion.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.autocomplete.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.button.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.datepicker.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.dialog.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.draggable.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.droppable.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-blind.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-bounce.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-clip.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-drop.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-explode.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-fade.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-fold.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-highlight.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-pulsate.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-scale.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-shake.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-slide.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect-transfer.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.effect.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.menu.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.mouse.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.position.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.progressbar.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.resizable.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.selectable.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.slider.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.sortable.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.spinner.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.tabs.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.tooltip.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui\jquery.ui.widget.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.accordion.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.autocomplete.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.button.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.core.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.datepicker.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.dialog.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.draggable.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.droppable.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-blind.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-bounce.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-clip.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-drop.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-explode.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-fade.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-fold.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-highlight.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-pulsate.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-scale.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-shake.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-slide.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect-transfer.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.effect.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.menu.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.mouse.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.position.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.progressbar.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.resizable.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.selectable.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.slider.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.sortable.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.spinner.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.tabs.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.tooltip.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\jquery.ui\ui.widget.jquery.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\.bowerrc" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\.gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\CHANGELOG.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\Gruntfile.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\LICENSE" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\ngStorage.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\ngStorage.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\ngstorage\test\spec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\.bower.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\.travis.yml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\component.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\dist\underscore.string.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\Gemfile" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\Gemfile.lock" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\lib\underscore.string.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\Rakefile" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\README.markdown" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\run-qunit.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\speed.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\strings.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\strings_standalone.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_standalone.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\arrays.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\chaining.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\collections.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\functions.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\objects.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\speed.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\utility.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\vendor\jquery.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\vendor\jslitmus.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\vendor\qunit.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\test_underscore\vendor\qunit.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\bower_components\underscore.string\test\underscore.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\config.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\foundation.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\foundation.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\normalize.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\animated-overlay.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-icons_222222_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-icons_454545_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-icons_888888_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery-ui.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.accordion.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.all.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.autocomplete.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.base.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.button.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.core.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.datepicker.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.dialog.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.menu.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.progressbar.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.resizable.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.selectable.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.slider.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.spinner.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.tabs.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.theme.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\jquery.ui.tooltip.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\animated-overlay.gif" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery-ui.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.button.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.core.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.menu.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.slider.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.theme.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\topcoat-mobile-dark.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Content\topcoat-mobile-dark.min.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\cordova_plugins.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\animation.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\app.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\fontello-codes.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\fontello-embedded.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\fontello-ie7-codes.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\fontello-ie7.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\fontello.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\css\index.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\font\fontello.eot" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\font\fontello.svg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\font\fontello.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\font\fontello.woff" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\fonts\glyphicons-halflings-regular.eot" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\fonts\glyphicons-halflings-regular.svg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\fonts\glyphicons-halflings-regular.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\fonts\glyphicons-halflings-regular.woff" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Global.asax" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\img\bg_dark.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\img\logo.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\app.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\app.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\app.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\app.min.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\app.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\AddItemCameraController.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\AddItemCameraController.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\AddItemController.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\AddItemController.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\FridgeController.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\FridgeController.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\LoginController.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers\LoginController.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\controllers.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\directives.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\filters.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\index.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\interfaces\ISafeApplyScope.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\interfaces\ISafeApplyScope.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\interfaces\ISafeApplyScope.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\interfaces\ISafeApplyScope.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\models\DateItItem.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\models\DateItItem.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\models\Item.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\models\Item.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\models\User.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\models\User.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\services\Datacontext.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\services\Datacontext.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\services\Datacontext.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\services\Datacontext.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\services.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\_all.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\_all.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\_all.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\js\_all.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular-loader.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular-loader.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\angular.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\angular\version.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-bg_glass_75_ffffff_1x400.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-icons_222222_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-icons_2e83ff_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-icons_454545_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-icons_888888_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-icons_cd0a0a_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\img\ui-icons_f6cf3b_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver-core.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver-datepicker.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver-fileupload.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver-filters.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver-string-filter.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver-table.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\macgyver.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\lib\MacGyver.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\package.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\src\Scope.SafeApply.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\lib\angular\angular-loader.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\lib\angular\angular-mocks.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\lib\angular\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\lib\chai-expect.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\lib\chai-should.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\lib\chai.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\run.sh" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\spec\apiSpec.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\node_modules\angularjs-scope.safeapply\test\testacular.conf.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\partials\addByText.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\partials\inFridge.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\partials\login.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\partials\partial2.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\plugins\org.apache.cordova.camera\www\Camera.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\plugins\org.apache.cordova.camera\www\CameraConstants.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\plugins\org.apache.cordova.camera\www\CameraPopoverHandle.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\plugins\org.apache.cordova.camera\www\CameraPopoverOptions.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-36-ldpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-48-mdpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-72-hdpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\android\icon-96-xhdpi.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada\icon-128.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada-wac\icon-48-type5.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada-wac\icon-50-type3.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\bada-wac\icon-80-type4.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\blackberry\icon-80.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-57-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-57.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-72-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\ios\icon-72.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\tizen\icon-128.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\webos\icon-64.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\windows-phone\icon-173-tile.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\windows-phone\icon-48.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\icon\windows-phone\icon-62-tile.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-hdpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-hdpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-ldpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-ldpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-mdpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-mdpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-xhdpi-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\android\screen-xhdpi-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada\screen-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada-wac\screen-type3.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada-wac\screen-type4.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\bada-wac\screen-type5.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\blackberry\screen-225.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-landscape-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-portrait-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-ipad-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-landscape-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-landscape.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-portrait-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-portrait-568h-2x.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\ios\screen-iphone-portrait.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\tizen\README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\webos\screen-64.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\res\screen\windows-phone\screen-portrait.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-mocks.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-resource.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular-resource.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\angular.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\bootstrap.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\bootstrap.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\jquery-ui-1.10.3.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\jquery-ui-1.10.3.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\angularjs\angular-cookies.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\angularjs\angular-mocks.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\angularjs\angular-resource.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\angularjs\angular-scenario.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\angularjs\angular.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\jquery\jquery.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\moment\moment.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\phonegap\phonegap.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\typings\underscore\underscore.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\underscore.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\underscore.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Scripts\underscore.min.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\helper.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\index.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\jasmine-html.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\jasmine.css" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\jasmine.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec\lib\jasmine-1.2.0\MIT.LICENSE" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\spec.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\accordion\accordion-group.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\accordion\accordion.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\alert\alert.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\carousel\carousel.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\carousel\slide.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\datepicker\datepicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\datepicker\popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\dialog\message.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\modal\backdrop.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\modal\window.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\pagination\pager.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\pagination\pagination.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\popover\popover.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\progressbar\bar.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\progressbar\progress.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\rating\rating.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\tabs\tab.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\tabs\tabset-titles.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\tabs\tabset.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\timepicker\timepicker.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\tooltip\tooltip-html-unsafe-popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\tooltip\tooltip-popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\typeahead\typeahead-match.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\template\typeahead\typeahead-popup.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\Web.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\website.publishproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\WebWorkbench.mswwsettings" />
+    </ItemGroup>
+</Project>
