@@ -40,6 +40,7 @@ module dateIt {
                     this.$scope.user = this.datacontext.getCurrentUser();
                     this.$log.info(this.datacontext.getCurrentUser());
                     this.$log.info("IsLoggedIn: " + this.$scope.isLoggedIn);
+                    this.$location.path("/infridge");
                     this.$scope.$apply();
                 })
             , ((error) => {

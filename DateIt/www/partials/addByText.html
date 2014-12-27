@@ -2,17 +2,17 @@
     <div class="row">
         <div class="span12">
             <div class='container-fluid'>
-                <input type="text" data-ng-model="dateItItem.name" data-typeahead-on-select="itemSelected()" data-typeahead="item.name for item in items | filter:$viewValue | limitTo:8">
+                <input type="text" class="topcoat-text-input--large" data-ng-model="dateItItem.name" data-typeahead-on-select="itemSelected()" data-typeahead="item.name for item in items | filter:$viewValue | limitTo:8">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="span12">
             <div class="form-horizontal" data-ng-init="opened=false">
-                <input type="text" data-datepicker-popup="dd-MMMM-yyyy" data-ng-model="dateItItem.expireDate" is-open="opened"
+                <input class="topcoat-text-input--large" type="text" data-datepicker-popup="dd-MMMM-yyyy" data-ng-model="dateItItem.expireDate" is-open="opened"
                        min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
                        ng-required="true" />
-                <a class="btn" ng-click="opened = !opened"><i class="icon-calendar"></i></a>
+                <a class="topcoat-icon-button" ng-click="opened = !opened"><i class="icon-calendar"></i></a>
             </div>
         </div>
     </div>

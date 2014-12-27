@@ -42,6 +42,7 @@ var dateIt;
                 _this.$scope.user = _this.datacontext.getCurrentUser();
                 _this.$log.info(_this.datacontext.getCurrentUser());
                 _this.$log.info("IsLoggedIn: " + _this.$scope.isLoggedIn);
+                _this.$location.path("/infridge");
                 _this.$scope.$apply();
             }), (function (error) {
                 alert(error);

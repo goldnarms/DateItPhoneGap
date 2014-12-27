@@ -3,6 +3,7 @@ var dateIt;
 (function (dateIt) {
     'use strict';
 
+    XMLHttpRequest.prototype.withCredentials = false;
     var services = angular.module("dateIt.Services", []);
     services.service("datacontext", dateIt.DatacontextService.prototype.injection());
 
@@ -11,7 +12,9 @@ var dateIt;
     controllers.controller("loginCtrl", dateIt.LoginController.prototype.injection());
     controllers.controller("addItemCtrl", dateIt.AddItemController.prototype.injection());
 
-    var app = angular.module("dateIt", ["ngRoute", "ui.bootstrap", "Scope.safeApply", "dateIt.Controllers", "dateIt.Services", "angularMoment", "LocalStorageModule"]);
+    var directives = angular.module("dateIt.Directives", []);
+    directives.directive("footer", dateIt.Footer.prototype.injection());
+    var app = angular.module("dateIt", ["ngRoute", "ngStorage", "ui.bootstrap", "Scope.safeApply", "dateIt.Controllers", "dateIt.Services", "dateIt.Directives", "angularMoment", "LocalStorageModule"]);
 
     //.service("datacontext", dateIt.DatacontextService.prototype.injection());;
     // Declare app level module which depends on filters, and services
@@ -37,4 +40,3 @@ var dateIt;
         }
     ]);
 })(dateIt || (dateIt = {}));
-//# sourceMappingURL=app.js.map

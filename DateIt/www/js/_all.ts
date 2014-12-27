@@ -1,4 +1,5 @@
-﻿/// <reference path="../Scripts/typings/phonegap/phonegap.d.ts" />
+﻿/// <reference path="directives/footer.ts" />
+/// <reference path="../Scripts/typings/phonegap/phonegap.d.ts" />
 /// <reference path="controllers/logincontroller.ts" />
 /// <reference path="controllers/additemcontroller.ts" />
 /// <reference path='../Scripts/typings/angularjs/angular.d.ts' />

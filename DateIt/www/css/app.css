@@ -42,7 +42,6 @@ html, body {
     position: relative;
     background-color: #ccc;
     font-size: 2.8em;
-    position: fixed;
     height: 60px;
     bottom: 0px;
     width: 100%;
@@ -61,4 +60,9 @@ html, body {
         /*width: 100%;*/
         /*//position: absolute;*/
         margin: auto;
+    }
+    .topcoat-button-bar__button {
+        padding: 14px 10px;
+        font-size: 3rem;
+        text-align: center;
     }
